@@ -1,0 +1,210 @@
+/* Стили для блока согласия */
+.consent-section {
+  margin: 20px 0;
+  padding: 0;
+margin-left: 80px;
+margin-right: 80px;
+}
+
+.consent-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: left;
+}
+
+.consent-checkbox {
+  align-items: flex-start;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  position: relative;
+  padding-left: 30px;
+  line-height: 1.4;
+      margin-left: -32px;
+}
+
+.consent-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.consent-checkbox .checkmark {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.consent-checkbox input[type="checkbox"]:checked ~ .checkmark {
+  background-color: #CB5602;
+  border-color: #CB5602;
+}
+
+.consent-checkbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.consent-checkbox input[type="checkbox"]:checked ~ .checkmark:after {
+  display: block;
+}
+
+.privacy-link {
+  color: #CB5602;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+.privacy-link:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+/* Фон для всей страницы */
+.signin-page {
+  min-height: 100vh;
+  background-image: url('../img/backgroundSign.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+
+.signin-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+ 
+  z-index: 1;
+}
+
+.signin-container {
+  max-width: 680px;
+  width: 100%;
+  padding: 40px 30px;
+  background: rgba(255, 255, 255, 0.356);
+  border-radius: 80px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  z-index: 2; 
+}
+
+.signin-title {
+  font-size: 41px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #333;
+  font-family: 'Poppins';
+  text-align: left;
+  margin-left: 80px;
+}
+
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.form-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-input {
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 80px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #CB5602;
+}
+
+.form-input::placeholder {
+  color: #999;
+}
+
+.signin-button {
+  background: #CB5602;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 80px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  width: 200px;
+  margin-left: 236px;
+}
+
+.signin-button:hover {
+  background: #b34a02;
+}
+
+.signin-link {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+  text-align: right;
+  margin-right: 80px;
+}
+
+.signin-link a {
+  color: #CB5602;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signin-link a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+

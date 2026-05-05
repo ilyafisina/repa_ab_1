@@ -1,0 +1,519 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes rotateInExp {
+  from {
+    opacity: 0;
+    transform: rotate(45deg) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(11.16deg) scale(1);
+  }
+}
+
+@keyframes rotateInStudents {
+  from {
+    opacity: 0;
+    transform: rotate(-45deg) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-12.61deg) scale(1);
+  }
+}
+
+@keyframes rotateInPlan {
+  from {
+    opacity: 0;
+    transform: rotate(45deg) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(9.53deg) scale(1);
+  }
+}
+
+@keyframes rotateInFormat {
+  from {
+    opacity: 0;
+    transform: rotate(45deg) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(9.53deg) scale(1);
+  }
+}
+
+@keyframes floatExp {
+  0%, 100% { transform: rotate(11.16deg) translateY(0); }
+  50% { transform: rotate(11.16deg) translateY(-8px); }
+}
+
+@keyframes floatStudents {
+  0%, 100% { transform: rotate(-12.61deg) translateY(0); }
+  50% { transform: rotate(-12.61deg) translateY(-8px); }
+}
+
+@keyframes floatPlan {
+  0%, 100% { transform: rotate(9.53deg) translateY(0); }
+  50% { transform: rotate(9.53deg) translateY(-8px); }
+}
+
+@keyframes floatFormat {
+  0%, 100% { transform: rotate(9.53deg) translateY(0); }
+  50% { transform: rotate(9.53deg) translateY(-8px); }
+}
+
+.hero-block {
+    width: 100%;
+    height: 400px;
+    border-radius: 24px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 320px;
+    margin-top: 100px;
+}
+
+.text-block {
+    max-width: 100%;
+    background-color: #FE8200;
+    border-radius: 24px;
+    padding: 24px;
+    width: 800px;
+    height: 350px;
+    animation: fadeInLeft 0.8s ease-out 0.2s both;
+}
+
+.teacher-info {
+    font-size: 66px;
+    color: white;
+    margin: 0;
+    line-height: 1.1;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.teacher-details {
+    margin-top: 20px;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.teacher-name {
+    font-size: 25px;
+    color: white;
+    margin: 0;
+    font-weight: 400;
+}
+
+.teacher-description {
+    font-size: 16px;
+    color: white;
+    font-weight: 100;
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+.btn {
+    margin-top: 30px;
+    float: right;
+    animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+.btn-start {
+    width: 252px;
+    height: 46px;
+    font-size: 18px;
+    border-radius: 40px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-start:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.image-block {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    max-width: 50%;
+    animation: fadeInRight 0.8s ease-out 0.4s both;
+}
+
+.img-teacher {
+    width: 100%;
+    max-width: 566px;
+    height: 399px;
+    border-radius: 24px;
+    object-fit: cover;
+}
+
+.section-description{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    margin-left: 60px;
+    margin-right: 60px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.learning{
+    font-size: 41px;
+    line-height: 50px;
+    animation: fadeInLeft 0.8s ease-out 0.2s both;
+}
+
+.learning-two{
+    font-size: 41px;
+    padding: 0;
+    margin: 0;
+    color: #FE8200;
+}
+
+.bio{
+    font-size: 16px;
+    font-weight: 100;
+    animation: fadeInRight 0.8s ease-out 0.4s both;
+}
+
+.stikers-container {
+    position: relative;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.stikers{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2; 
+}
+
+.exp{
+    width: 250px;
+    height: 250px;
+    border-radius: 30px;
+    background-color: #FAA44B;
+    transform: rotate(11.16deg);
+    margin-left: 60px;
+    margin-top: 47px;
+    padding: 10px;
+    animation: rotateInExp 0.8s ease-out 0.6s both, floatExp 3s ease-in-out 1.2s infinite;
+    transition: all 0.3s ease;
+}
+
+.exp:hover {
+    transform: rotate(11.16deg) scale(1.05);
+}
+
+.five-year{
+    font-weight: 300;
+    border-radius: 20px;
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.exp:hover .five-year {
+    background-color: #FE8200;
+    color: white;
+}
+
+.disc{
+    font-weight: 400;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+.stik1{
+    margin-top: -7px;
+    transform: rotate(deg);
+    margin-left: 60px;
+    transition: transform 0.3s ease;
+}
+
+.exp:hover .stik1 {
+    transform: rotate(5deg);
+}
+
+.students{
+    width: 250px;
+    height: 250px;
+    border-radius: 30px;
+    background-color: #FFBBAA;
+    transform: rotate(-12.61deg);
+    margin-left: 60px;
+    margin-top: 85px;
+    padding: 10px;
+    margin-left: 160px;
+    animation: rotateInStudents 0.8s ease-out 0.8s both, floatStudents 3s ease-in-out 1.4s infinite;
+    transition: all 0.3s ease;
+}
+
+.students:hover {
+    transform: rotate(-12.61deg) scale(1.05);
+}
+
+.fivtee-plus{
+    font-weight: 300;
+    border-radius: 20px;
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.students:hover .fivtee-plus {
+    background-color: #FE8200;
+    color: white;
+}
+
+.stik2{
+    margin-top: -7px;
+    transform: rotate(13deg);
+    margin-left: 60px;
+    width: 137px;
+    transition: transform 0.3s ease;
+}
+
+.students:hover .stik2 {
+    transform: rotate(18deg);
+}
+
+.disc-students{
+    font-weight: 400;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+.plan{
+    width: 250px;
+    height: 250px;
+    border-radius: 30px;
+    background-color: #FFE374;
+    transform: rotate(9.53deg);
+    margin-left: 150px;
+    margin-top: 27px;
+    padding: 10px;
+    animation: rotateInPlan 0.8s ease-out 1s both, floatPlan 3s ease-in-out 1.6s infinite;
+    transition: all 0.3s ease;
+}
+
+.plan:hover {
+    transform: rotate(9.53deg) scale(1.05);
+}
+
+.education{
+    font-weight: 300;
+    border-radius: 20px;
+    background-color: white;
+    width: 160px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.plan:hover .education {
+    background-color: #FE8200;
+    color: white;
+}
+
+.stik3{
+    margin-top: -7px;
+    transform: rotate(-9deg);
+    margin-left: 60px;
+    width: 137px;
+    transition: transform 0.3s ease;
+}
+
+.plan:hover .stik3 {
+    transform: rotate(-14deg);
+}
+
+.disc-education{
+    font-weight: 400;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+.format{
+    width: 250px;
+    height: 250px;
+    border-radius: 30px;
+    background-color: #FBA76C;
+    transform: rotate(9.53deg);
+    margin-left: 100px;
+    margin-top: 133px;
+    padding: 10px;
+    animation: rotateInFormat 0.8s ease-out 1.2s both, floatFormat 3s ease-in-out 1.8s infinite;
+    transition: all 0.3s ease;
+}
+
+.format:hover {
+    transform: rotate(9.53deg) scale(1.05);
+}
+
+.format-variant{
+    font-weight: 300;
+    border-radius: 20px;
+    background-color: white;
+    width: 160px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.format:hover .format-variant {
+    background-color: #FE8200;
+    color: white;
+}
+
+.stik4{
+    margin-top: px;
+    transform: rotate(-15deg);
+    margin-left: 60px;
+    width: 160px;
+    transition: transform 0.3s ease;
+}
+
+.format:hover .stik4 {
+    transform: rotate(-20deg);
+}
+
+.disc-format{
+    font-weight: 400;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+.arrow{
+    position: absolute;
+    left: 20%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    z-index: 1; 
+    animation: bounce 2s ease-in-out infinite, pulse 3s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+    .hero-block {
+        height: auto;
+        padding: 30px 0;
+    }
+    
+    .hero-content {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+    
+    .text-block {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .image-block {
+        max-width: 100%;
+        justify-content: center;
+    }
+    
+    .teacher-info {
+        font-size: 48px;
+    }
+    
+    .teacher-name {
+        font-size: 20px;
+    }
+    
+    .img-teacher {
+        height: 300px;
+    }
+    
+    .arrow {
+        display: none;
+    }
+    
+    .exp, .students, .plan, .format {
+        animation: fadeInUp 0.8s ease-out both;
+        transform: rotate(0deg) !important;
+    }
+    
+    .exp:hover, .students:hover, .plan:hover, .format:hover {
+        transform: rotate(0deg) scale(1.05) !important;
+    }
+}

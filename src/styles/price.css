@@ -1,0 +1,378 @@
+.price-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+  position: relative;
+}
+
+
+.price-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../img/bg-price.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -1;
+}
+
+.price-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.price-title {
+      font-size: 18px;
+  
+    border-radius: 40px;
+    background-color: #FAE2C9;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    width: 300px;
+    display: inline-block;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color: #CB5602;
+}
+
+.price-subtitle {
+     font-size: 66px;
+    color: black;
+    font-weight: bold;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.price-description {
+  font-size: 18px;
+  color: #636363; 
+  line-height: 1.6;
+   max-width: 800px; 
+  margin: 0 auto;
+}
+
+
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.price-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.price-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.price-card.featured {
+  border-color: #FE8200;
+  transform: scale(1.05);
+}
+
+.price-card.featured:hover {
+  transform: scale(1.05) translateY(-5px);
+}
+
+.card-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FE8200;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.card-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.card-subtitle {
+  font-size: 16px;
+  color: #7f8c8d;
+  line-height: 1.4;
+}
+
+.card-price {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px 0;
+  border-bottom: 2px solid #f8f9fa;
+}
+
+.price-amount {
+  font-size: 48px;
+  font-weight: 700;
+  color: #FE8200;
+  display: block;
+}
+
+.price-period {
+  font-size: 16px;
+  color: #7f8c8d;
+}
+
+.card-features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+.feature-icon {
+  color: #FE8200;
+  font-weight: bold;
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+.card-button {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  border: 2px solid #FE8200;
+  background: white;
+  color: #FE8200;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card-button:hover {
+  background: #FE8200;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.card-button.primary {
+  background: #FE8200;
+  color: white;
+}
+
+.card-button.primary:hover {
+  background: #e67400;
+  border-color: #e67400;
+}
+
+
+.discounts-section {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 60px 40px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  position: relative;
+  z-index: 1;
+}
+
+.discounts-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.discounts-subtitle {
+  font-size: 18px;
+  color: #7f8c8d;
+  margin-bottom: 50px;
+}
+
+.discount-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.discount-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.discount-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.discount-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.discount-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.discount-percent {
+  background: #FE8200;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.discount-sessions {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.discount-description {
+  font-size: 14px;
+  color: #7f8c8d;
+  line-height: 1.4;
+  margin: 0;
+}
+
+
+@media (max-width: 1024px) {
+  .pricing-cards {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto 80px;
+  }
+  
+  .price-card.featured {
+    transform: none;
+  }
+  
+  .price-card.featured:hover {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .price-page {
+    padding: 40px 15px;
+  }
+  
+  .price-title {
+    font-size: 36px;
+    color: #ffffff; 
+  }
+  
+  .price-subtitle {
+    font-size: 20px;
+  }
+  
+  .price-description {
+    font-size: 16px;
+    color: #ffffff;
+  }
+  
+  .pricing-cards {
+    gap: 30px;
+  }
+  
+  .price-card {
+    padding: 30px 20px;
+  }
+  
+  .card-title {
+    font-size: 24px;
+  }
+  
+  .price-amount {
+    font-size: 36px;
+  }
+  
+  .discounts-section {
+    padding: 40px 20px;
+  }
+  
+  .discounts-title {
+    font-size: 28px;
+  }
+  
+  .discount-cards {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .price-title {
+    font-size: 28px;
+  }
+  
+  .price-subtitle {
+    font-size: 18px;
+  }
+  
+  .card-title {
+    font-size: 22px;
+  }
+  
+  .price-amount {
+    font-size: 32px;
+  }
+  
+  .feature-item {
+    font-size: 14px;
+  }
+  
+  .card-button {
+    font-size: 16px;
+    padding: 12px;
+  }
+  
+  .discount-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}

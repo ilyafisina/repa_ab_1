@@ -1,0 +1,485 @@
+/* ============================================
+   LESSON MODAL STYLES
+   ============================================ */
+
+.lesson-modal-enhanced .modal-content {
+  max-width: 920px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.lesson-modal-enhanced .modal-header {
+  padding: 28px 32px;
+  background: linear-gradient(135deg, #FE8200 0%, #CB5602 100%);
+  color: white;
+  border-radius: 16px 16px 0 0;
+  margin: 0;
+}
+
+.lesson-modal-enhanced .modal-header h2 {
+  color: white;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.lesson-modal-enhanced .modal-close {
+  color: white;
+  opacity: 0.9;
+  font-size: 1.5rem;
+}
+
+.lesson-modal-enhanced .modal-close:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.lesson-form-enhanced {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px;
+  background: #ffffff;
+}
+
+/* Section Styling */
+.lesson-form-enhanced .form-section {
+  background: linear-gradient(135deg, #fafbfc 0%, #f8f9fa 100%);
+  border-radius: 16px;
+  padding: 24px 20px;
+  display: flex;
+  gap: 20px;
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* Special padding for datetime section */
+.lesson-section-datetime.form-section {
+  padding: 24px 16px;
+}
+
+.lesson-form-enhanced .form-section:hover {
+  border-color: #FE8200;
+  box-shadow: 0 4px 16px rgba(254, 130, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.lesson-form-enhanced .section-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #FE8200 0%, #CB5602 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(254, 130, 0, 0.25);
+}
+
+.lesson-form-enhanced .section-content {
+  flex: 1;
+}
+
+.lesson-form-enhanced .section-content h4 {
+  margin: 0 0 20px 0;
+  color: #2c3e50;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+/* Date/Time Section - CUSTOM GRID */
+.lesson-section-datetime .form-row {
+  display: grid;
+  grid-template-columns: 0.6fr 2.4fr !important;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+/* Duration field - full width */
+.lesson-section-datetime .lesson-form-group:last-child {
+  grid-column: 1 / -1;
+}
+
+/* Make time select wider */
+.lesson-section-datetime .form-row .lesson-form-group:nth-child(2) select {
+  width: 100%;
+  min-width: 280px;
+}
+
+/* Lesson Type Cards */
+.lesson-type-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.lesson-type-card {
+  position: relative;
+  padding: 20px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.lesson-type-card:hover {
+  border-color: #FE8200;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(254, 130, 0, 0.2);
+}
+
+.lesson-type-card.selected {
+  border-color: #FE8200;
+  background: linear-gradient(135deg, rgba(254, 130, 0, 0.15) 0%, rgba(203, 86, 2, 0.12) 100%);
+  box-shadow: 0 4px 16px rgba(254, 130, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+.lesson-type-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.lesson-type-card .card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.lesson-type-card .card-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.lesson-type-card .card-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #2c3e50;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Location Input */
+.location-input {
+  margin-top: 20px;
+  animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Group Student Selector */
+.group-student-selector {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.student-select-group {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.student-select-group:focus {
+  outline: none;
+  border-color: #FE8200;
+  box-shadow: 0 0 0 3px rgba(254, 130, 0, 0.1);
+}
+
+.add-student-btn {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #FE8200 0%, #CB5602 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.add-student-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(254, 130, 0, 0.3);
+}
+
+.add-student-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Selected Students List */
+.selected-students-list {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  border: 2px solid #e9ecef;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.list-label {
+  margin: 0 0 16px 0;
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 0.98rem;
+  letter-spacing: -0.2px;
+}
+
+.selected-student-chip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, rgba(254, 130, 0, 0.12) 0%, rgba(203, 86, 2, 0.1) 100%);
+  border: 2px solid #FE8200;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(254, 130, 0, 0.1);
+}
+
+.selected-student-chip:hover {
+  transform: translateX(6px);
+  box-shadow: 0 4px 12px rgba(254, 130, 0, 0.25);
+}
+
+.selected-student-chip svg {
+  color: #FE8200;
+  font-size: 1.1rem;
+}
+
+.selected-student-chip span {
+  flex: 1;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.remove-student-btn {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.remove-student-btn:hover {
+  background: #e74c3c;
+  color: white;
+}
+
+.no-students-message {
+  text-align: center;
+  color: #95a5a6;
+  font-style: italic;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  border: 2px dashed #e9ecef;
+}
+
+/* Enhanced Form Groups */
+.lesson-form-enhanced .lesson-form-group {
+  margin-bottom: 0;
+}
+
+.lesson-form-enhanced .lesson-form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.96rem;
+  letter-spacing: -0.2px;
+}
+
+.lesson-form-enhanced .lesson-form-group input,
+.lesson-form-enhanced .lesson-form-group select,
+.lesson-form-enhanced .lesson-form-group textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+}
+
+.lesson-form-enhanced .lesson-form-group input:focus,
+.lesson-form-enhanced .lesson-form-group select:focus,
+.lesson-form-enhanced .lesson-form-group textarea:focus {
+  outline: none;
+  border-color: #FE8200;
+  box-shadow: 0 0 0 4px rgba(254, 130, 0, 0.12);
+  background: #ffffff;
+}
+
+.lesson-form-enhanced .lesson-form-group textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.6;
+}
+
+.lesson-form-enhanced .form-hint {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.86rem;
+  color: #7f8c8d;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Modal Actions */
+.lesson-modal-enhanced .modal-actions {
+  padding: 24px 32px;
+  margin: 0;
+  background: #f8f9fa;
+  border-radius: 0 0 16px 16px;
+  border-top: 2px solid #e9ecef;
+}
+
+.lesson-modal-enhanced .cancel-btn {
+  padding: 13px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+.lesson-modal-enhanced .save-btn {
+  padding: 13px 32px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(254, 130, 0, 0.3);
+}
+
+/* Group Format Selector */
+.group-format-selector {
+  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  border: 2px solid #e9ecef;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.group-format-label {
+  display: block;
+  margin-bottom: 16px;
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 0.98rem;
+  letter-spacing: -0.2px;
+}
+
+.group-format-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.format-option-card {
+  position: relative;
+  padding: 18px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.format-option-card:hover {
+  border-color: #FE8200;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(254, 130, 0, 0.15);
+}
+
+.format-option-card.selected {
+  border-color: #FE8200;
+  background: linear-gradient(135deg, rgba(254, 130, 0, 0.12) 0%, rgba(203, 86, 2, 0.1) 100%);
+  box-shadow: 0 4px 12px rgba(254, 130, 0, 0.2);
+}
+
+.format-option-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.format-option-card .option-icon {
+  font-size: 1.8rem;
+}
+
+.format-option-card .option-text {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .lesson-type-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-section-datetime .form-row {
+    grid-template-columns: 1fr !important;
+    margin-bottom: 0;
+  }
+
+  .lesson-section-datetime .form-group:last-child {
+    grid-column: auto;
+  }
+
+  .group-student-selector {
+    flex-direction: column;
+  }
+
+  .lesson-form-enhanced .form-section {
+    flex-direction: column;
+  }
+
+  .lesson-form-enhanced .section-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .group-format-options {
+    grid-template-columns: 1fr;
+  }
+}

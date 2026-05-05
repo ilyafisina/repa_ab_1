@@ -1,0 +1,189 @@
+/* ============================================
+   SIDEBAR STYLES - НОВАЯ СТРУКТУРА
+   ============================================ */
+
+.app-sidebar {
+    width: 280px;
+    background: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    z-index: 100;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-sidebar.closed {
+    width: 80px;
+}
+
+/* Header сайдбара */
+.app-sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: linear-gradient(135deg, #FE8200 0%, #CB5602 100%);
+    flex-shrink: 0;
+}
+
+.app-user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.app-user-avatar {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FE8200;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.app-user-details h3 {
+    margin: 0 0 4px 0;
+    font-size: 1rem;
+    color: white;
+    font-weight: 600;
+}
+
+.app-user-details p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.app-toggle-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    flex-shrink: 0;
+}
+
+.app-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Навигация - компактная */
+.app-sidebar-navigation {
+    padding: 15px 0;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.app-nav-item {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 2px 0;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #7f8c8d;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.app-nav-item:hover {
+    background: #f8f9fa;
+    color: #2c3e50;
+}
+
+.app-nav-item.active {
+    background: linear-gradient(135deg, rgba(254, 130, 0, 0.1) 0%, rgba(203, 86, 2, 0.08) 100%);
+    color: #2c3e50;
+    border-left: 4px solid #FE8200;
+}
+
+.app-nav-item.active .app-nav-text {
+    color: #FE8200;
+    font-weight: 600;
+    text-shadow: 0 0 1px white, 0 0 2px white, 0 0 3px white;
+}
+
+.app-nav-icon {
+    font-size: 1.2rem;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.app-nav-text {
+    font-weight: 500;
+}
+
+/* Footer - прикреплен к низу */
+.app-sidebar-bottom {
+    padding: 20px;
+    border-top: 2px solid #e9ecef;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.app-next-lesson-card {
+    background: linear-gradient(135deg, rgba(254, 130, 0, 0.1) 0%, rgba(203, 86, 2, 0.08) 100%);
+    padding: 16px;
+    border-radius: 12px;
+    border: 2px solid rgba(254, 130, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(254, 130, 0, 0.1);
+}
+
+.app-next-lesson-card h4 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.app-next-lesson-card p {
+    margin: 0 0 6px 0;
+    color: #FE8200;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.app-next-lesson-card small {
+    color: #5a6268;
+    font-size: 0.85rem;
+    display: block;
+    line-height: 1.4;
+}
+
+/* Закрытый сайдбар */
+.app-sidebar.closed .app-user-details,
+.app-sidebar.closed .app-nav-text {
+    display: none;
+}
+
+.app-sidebar.closed .app-nav-item {
+    justify-content: center;
+    padding: 10px;
+}
+
+.app-sidebar.closed .app-nav-item.active {
+    border-left: none;
+    border-top: 4px solid #FE8200;
+}

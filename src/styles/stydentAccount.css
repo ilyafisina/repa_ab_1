@@ -1,0 +1,1354 @@
+.students-account {
+  display: flex;
+  height: 100vh;
+  background-color: #fef6f0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+/* Боковая панель */
+.sidebar {
+  width: 280px;
+  background: linear-gradient(135deg, #FE8200 0%, #CB5602 100%);
+  color: white;
+  transition: all 0.3s ease;
+
+  flex-direction: column;
+}
+
+.sidebar.closed {
+  width: 80px;
+}
+
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.user-details h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.user-details p {
+  margin: 4px 0 0 0;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.student-status {
+  color: #ffd700;
+  font-weight: 600;
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.sidebar-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 20px 0;
+}
+
+.nav-item {
+  width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.2);
+  border-right: 3px solid #ffd700;
+}
+
+.nav-icon {
+  font-size: 18px;
+  min-width: 20px;
+}
+
+.nav-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.next-lesson h4 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.next-lesson p {
+  margin: 4px 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.next-lesson small {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* Основной контент */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.content-header {
+  background: white;
+  padding: 20px 30px;
+  border-bottom: 1px solid #ffe4cc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(254, 130, 0, 0.08);
+}
+
+.welcome-message h1 {
+  margin: 0;
+  color: #CB5602;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.welcome-message p {
+  margin: 4px 0 0 0;
+  color: #FE8200;
+  font-size: 14px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.balance-display {
+  background: #fff5eb;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #ffe4cc;
+  font-size: 14px;
+  color: #CB5602;
+  font-weight: 600;
+}
+
+.action-btn {
+  background: #fff5eb;
+  border: 1px solid #ffe4cc;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #CB5602;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.action-btn:hover {
+  background: #ffe4cc;
+  border-color: #FE8200;
+}
+
+.logout-btn {
+  background: #ffe4cc;
+  color: #CB5602;
+  border-color: #FE8200;
+}
+
+.logout-btn:hover {
+  background: #ffd5b2;
+}
+
+.content-area {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  background: #fef6f0;
+}
+
+.current-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.section-icon {
+  font-size: 24px;
+  color: #FE8200;
+}
+
+.section-header h2 {
+  margin: 0;
+  color: #CB5602;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Карточки и общие стили */
+.lesson-card,
+.homework-card,
+.payment-item,
+.material-folder {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(254, 130, 0, 0.08);
+  border: 1px solid #ffe4cc;
+  transition: all 0.2s;
+}
+
+.lesson-card:hover,
+.homework-card:hover {
+  box-shadow: 0 4px 12px rgba(254, 130, 0, 0.12);
+  transform: translateY(-1px);
+  border-color: #FE8200;
+}
+
+/* Статус-бейджи */
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-new {
+  background: #ffe4cc;
+  color: #CB5602;
+}
+
+.status-in-progress {
+  background: #fff5eb;
+  color: #FE8200;
+  border: 1px solid #ffe4cc;
+}
+
+.status-completed {
+  background: #f0fff4;
+  color: #276749;
+}
+
+.status-overdue {
+  background: #fed7d7;
+  color: #c53030;
+}
+
+.status-upcoming {
+  background: #e9d8fd;
+  color: #6b46c1;
+}
+
+.status-paid {
+  background: #f0fff4;
+  color: #276749;
+}
+
+.status-pending {
+  background: #fff5eb;
+  color: #FE8200;
+  border: 1px solid #ffe4cc;
+}
+
+.status-missed {
+  background: #fed7d7;
+  color: #c53030;
+}
+
+/* Модальное окно подробной информации об уроке */
+.lesson-detail-modal {
+  max-width: 600px;
+}
+
+.modal-subtitle {
+  margin: 4px 0 0 0;
+  font-size: 14px;
+  color: #FE8200;
+  font-weight: 500;
+}
+
+.lesson-detail-content {
+  padding: 24px;
+}
+
+.detail-section {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #ffe4cc;
+}
+
+.detail-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.detail-section h3 {
+  margin: 0 0 16px 0;
+  color: #CB5602;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detail-info p {
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.detail-info strong {
+  color: #CB5602;
+  font-weight: 600;
+}
+
+.lesson-format {
+  background: #fff5eb;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.online-link {
+  color: #FE8200;
+  text-decoration: none;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.online-link:hover {
+  text-decoration: underline;
+}
+
+.phone-link {
+  color: #FE8200;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.phone-link:hover {
+  text-decoration: underline;
+}
+
+.price-text {
+  color: #FE8200;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.paid-badge {
+  background: #f0fff4;
+  color: #276749;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.unpaid-badge {
+  background: #fed7d7;
+  color: #c53030;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  flex-direction: row-reverse;
+}
+
+.save-btn,
+.cancel-btn {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.save-btn {
+  background: #FE8200;
+  color: white;
+}
+
+.save-btn:hover:not(.disabled) {
+  background: #e67400;
+}
+
+.save-btn.disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  background: #fff5eb;
+  color: #CB5602;
+  border: 1px solid #ffe4cc;
+}
+
+.cancel-btn:hover {
+  background: #ffe4cc;
+  border-color: #FE8200;
+}
+
+/* Кнопки */
+.view-btn,
+.upload-work-btn,
+.pay-btn,
+.add-balance-btn,
+.back-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.view-btn {
+  background: #fff5eb;
+  color: #CB5602;
+  border: 1px solid #ffe4cc;
+}
+
+.view-btn:hover {
+  background: #ffe4cc;
+  border-color: #FE8200;
+}
+
+.upload-work-btn {
+  background: #FE8200;
+  color: white;
+}
+
+.upload-work-btn:hover {
+  background: #e67400;
+}
+
+.pay-btn {
+  background: #FE8200;
+  color: white;
+}
+
+.pay-btn:hover:not(.disabled) {
+  background: #e67400;
+}
+
+.pay-btn.disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
+
+.pay-btn.paid-btn {
+  background: #f0fff4;
+  color: #276749;
+  border: 2px solid #276749;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.pay-btn.paid-btn:hover {
+  background: #f0fff4;
+  border-color: #276749;
+}
+
+.add-balance-btn {
+  background: #FE8200;
+  color: white;
+}
+
+.add-balance-btn:hover {
+  background: #e67400;
+}
+
+.back-btn {
+  background: #fff5eb;
+  color: #CB5602;
+  text-decoration: none;
+  border: 1px solid #ffe4cc;
+}
+
+.back-btn:hover {
+  background: #ffe4cc;
+  border-color: #FE8200;
+}
+
+/* Success попап */
+.success-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #FE8200;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(254, 130, 0, 0.3);
+  z-index: 1000;
+  animation: slideIn 0.3s ease;
+}
+
+.success-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Модальные окна */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 0;
+  max-width: 700px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 25px -5px rgba(254, 130, 0, 0.1);
+  border: 1px solid #ffe4cc;
+}
+
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #ffe4cc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff5eb;
+  border-radius: 12px 12px 0 0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #CB5602;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #FE8200;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.modal-close:hover {
+  background: #ffe4cc;
+}
+
+.upload-form {
+  padding: 24px;
+}
+
+.file-upload-area {
+  border: 2px dashed #ffe4cc;
+  border-radius: 8px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 16px;
+  background: #fffaf5;
+}
+
+.file-upload-area:hover {
+  border-color: #FE8200;
+  background: #fff5eb;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-input-label {
+  display: block;
+  cursor: pointer;
+}
+
+.upload-placeholder .upload-icon {
+  font-size: 32px;
+  color: #FE8200;
+  margin-bottom: 12px;
+}
+
+.selected-file {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: #fff5eb;
+  border-radius: 6px;
+  border: 1px solid #ffe4cc;
+  color: #CB5602;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.cancel-btn {
+  background: #fff5eb;
+  color: #CB5602;
+  border: 1px solid #ffe4cc;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.cancel-btn:hover {
+  background: #ffe4cc;
+}
+
+.save-btn {
+  background: #FE8200;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.save-btn:hover:not(:disabled) {
+  background: #e67400;
+}
+
+.save-btn:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    transform: translateX(-100%);
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .content-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .header-actions {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+/* Дополнительные стили для конкретных секций */
+.balance-card {
+  background: linear-gradient(135deg, #FE8200 0%, #CB5602 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(254, 130, 0, 0.2);
+}
+
+.balance-amount {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.teacher-comment {
+  background: #fff5eb;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #FE8200;
+  color: #CB5602;
+}
+
+.amount-positive {
+  color: #48bb78;
+  font-weight: 600;
+}
+
+.amount-negative {
+  color: #e53e3e;
+  font-weight: 600;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #FE8200;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Дополнительные оранжевые акценты */
+.homework-score {
+  background: #FE8200;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.lesson-type {
+  background: #fff5eb;
+  color: #CB5602;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.download-btn {
+  background: #fff5eb;
+  color: #FE8200;
+  border: 1px solid #ffe4cc;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.download-btn:hover {
+  background: #ffe4cc;
+  color: #CB5602;
+}
+
+/* Uploaded Files Section in Modal */
+.uploaded-files-section {
+  padding: 20px 24px 0;
+  border-bottom: 1px solid #ffe4cc;
+}
+
+.uploaded-files-section h4 {
+  margin: 0 0 16px 0;
+  color: #276749;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.files-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  background: #f0fff4;
+  border-radius: 6px;
+  border: 1px solid #bee3f8;
+  border-left: 3px solid #48bb78;
+}
+
+.file-icon {
+  color: #48bb78;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.file-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.file-name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2d3748;
+  word-break: break-word;
+}
+
+.file-date {
+  font-size: 12px;
+  color: #718096;
+}
+
+/* Uploaded Files in Detail View */
+.uploaded-files-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.uploaded-file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px;
+  background: #f0fff4;
+  border-radius: 8px;
+  border-left: 4px solid #48bb78;
+}
+
+.uploaded-file-item .file-icon {
+  color: #48bb78;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.uploaded-file-item .file-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.uploaded-file-item .file-name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2d3748;
+  word-break: break-word;
+}
+
+.uploaded-file-item .file-date {
+  font-size: 12px;
+  color: #718096;
+}
+
+.uploaded-file-item .download-btn {
+  background: #48bb78;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+}
+
+.uploaded-file-item .download-btn:hover {
+  background: #38a169;
+}
+
+.download-btn-small {
+  background: #48bb78;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+}
+
+.download-btn-small:hover {
+  background: #38a169;
+}
+
+/* Новые стили для улучшенных карточек домашних заданий */
+.homework-info {
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #666;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.info-icon {
+  color: #FE8200;
+  font-size: 14px;
+  min-width: 14px;
+}
+
+/* Стили для платежей */
+.payment-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.payment-description {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.payment-description strong {
+  color: #CB5602;
+  font-size: 14px;
+  word-break: break-word;
+}
+
+.payment-date {
+  color: #888;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.payment-amount {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: right;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.amount-positive {
+  color: #276749;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.amount-negative {
+  color: #c53030;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.payment-status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.payment-status-success {
+  background: #f0fff4;
+  color: #276749;
+}
+
+.payment-status-pending {
+  background: #fff5eb;
+  color: #FE8200;
+}
+
+.homework-description-preview {
+  margin: 16px 0;
+}
+
+.homework-description-preview p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Стили для детального отображения */
+.homework-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.info-card {
+  background: #fff5eb;
+  border: 1px solid #ffe4cc;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+}
+
+.info-card:hover {
+  background: #ffe4cc;
+  border-color: #FE8200;
+}
+
+.info-card-icon {
+  color: #FE8200;
+  font-size: 20px;
+  min-width: 20px;
+}
+
+.info-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-card-label {
+  font-size: 12px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.info-card-value {
+  font-size: 14px;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+/* Адаптивность для карточек информации */
+@media (max-width: 768px) {
+  .homework-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .info-item {
+    font-size: 13px;
+  }
+}
+
+/* Стили для статистики домашних заданий */
+.homework-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid;
+  border-color:#999;
+  border-width: 1px;
+  box-shadow: 0 2px 8px rgba(254, 130, 0, 0.08);
+  min-width: 180px;
+  transition: all 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(254, 130, 0, 0.12);
+}
+
+.stat-icon {
+  font-size: 28px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.stat-total {
+  border-left-color: #FE8200;
+}
+
+.stat-total .stat-value {
+  color: #FE8200;
+}
+
+.stat-checked {
+  border-left-color: #276749;
+}
+
+.stat-checked .stat-value {
+  color: #276749;
+}
+
+.stat-submitted {
+  border-left-color: #6b46c1;
+}
+
+.stat-submitted .stat-value {
+  color: #6b46c1;
+}
+
+@media (max-width: 768px) {
+  .homework-stats {
+    gap: 12px;
+  }
+
+  .stat-card {
+    min-width: auto;
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .stat-value {
+    font-size: 20px;
+  }
+}
+/* Стили для материалов домашнего задания */
+.attachments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.attachment-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: #fff5eb;
+  border-radius: 8px;
+  border: 1px solid #ffd4a3;
+}
+
+.attachment-item .file-icon {
+  font-size: 1.5rem;
+  color: #FE8200;
+  flex-shrink: 0;
+}
+
+.attachment-item .file-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.attachment-item .file-name {
+  font-weight: 500;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.attachment-item .file-size {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+}
+
+.attachment-item .download-btn {
+  background: linear-gradient(135deg, #FE8200 0%, #CB5602 100%);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  margin-left: auto;
+}
+
+.attachment-item .download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(254, 130, 0, 0.3);
+}
+
+/* ============================================
+   ARCHIVE BUTTON STYLES FOR STUDENT
+   ============================================ */
+
+.header-right-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.archive-toggle-btn {
+  padding: 10px 20px;
+  background: white;
+  color: #2c3e50;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.archive-toggle-btn:hover {
+  border-color: #FE8200;
+  color: #FE8200;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(254, 130, 0, 0.15);
+}
+
+.archive-toggle-btn.active {
+  background: linear-gradient(135deg, #FE8200 0%, #CB5602 100%);
+  color: white;
+  border-color: #FE8200;
+}
+
+.archive-toggle-btn.active:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(254, 130, 0, 0.3);
+}

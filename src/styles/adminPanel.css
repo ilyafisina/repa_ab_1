@@ -4113,3 +4113,213 @@
     width: 100%;
   }
 }
+
+/* Модальное окно добавления ученика */
+.add-student-modal-body {
+    padding: 0 25px 25px;
+}
+
+.add-student-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.add-student-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #666;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.add-student-tab:hover {
+    color: #FE8200;
+    background: rgba(254, 130, 0, 0.05);
+}
+
+.add-student-tab.active {
+    color: #FE8200;
+    background: rgba(254, 130, 0, 0.1);
+}
+
+.add-student-error {
+    background: #fff3f3;
+    color: #e74c3c;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    border: 1px solid #fdd;
+}
+
+.add-student-search input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background-color: #fafafa;
+    margin-bottom: 15px;
+}
+
+.add-student-search input:focus {
+    border-color: #FE8200;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(254, 130, 0, 0.1);
+    background-color: white;
+}
+
+.unassigned-students-list {
+    max-height: 350px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.unassigned-student-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 15px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    background: #fafafa;
+    transition: all 0.3s;
+}
+
+.unassigned-student-card:hover {
+    border-color: #FE8200;
+    box-shadow: 0 2px 8px rgba(254, 130, 0, 0.1);
+}
+
+.unassigned-student-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.unassigned-student-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FE8200, #CB5602);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+}
+
+.unassigned-student-details h4 {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #2c3e50;
+}
+
+.unassigned-student-details p {
+    margin: 2px 0 0;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.student-grade-badge {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 2px 8px;
+    background: rgba(254, 130, 0, 0.1);
+    color: #FE8200;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.assign-student-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #FE8200 0%, #CB5602 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.assign-student-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(254, 130, 0, 0.3);
+}
+
+.add-student-create-form .form-group {
+    margin-bottom: 15px;
+}
+
+.add-student-create-form .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.9rem;
+}
+
+.add-student-create-form .form-group input,
+.add-student-create-form .form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background-color: #fafafa;
+}
+
+.add-student-create-form .form-group input:focus,
+.add-student-create-form .form-group select:focus {
+    border-color: #FE8200;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(254, 130, 0, 0.1);
+    background-color: white;
+}
+
+.form-row-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .form-row-two {
+        grid-template-columns: 1fr;
+    }
+
+    .add-student-tabs {
+        flex-direction: column;
+    }
+
+    .unassigned-student-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .assign-student-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

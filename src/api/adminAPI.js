@@ -277,6 +277,76 @@ export const adminAPI = {
   },
 
   /**
+   * Получить незакреплённых учеников (без репетитора)
+   */
+  getUnassignedStudents: async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/tutor/unassigned-students`, {
+        method: 'GET',
+        headers: getHeaders(),
+      });
+
+      if (!response.ok) {
+        const error = await response.text();
+        throw new Error(error || `Ошибка ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data || [];
+    } catch (error) {
+      console.error('Ошибка при загрузке незакреплённых учеников:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Привязать существующего ученика к репетитору
+   */
+  assignStudent: async (studentId) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/tutor/students/${studentId}/assign`, {
+        method: 'POST',
+        headers: getHeaders(),
+      });
+
+      if (!response.ok) {
+        const error = await response.text();
+        throw new Error(error || `Ошибка ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Ошибка при привязке ученика:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Создать нового ученика
+   */
+  createStudent: async (studentData) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/tutor/students/create`, {
+        method: 'POST',
+        headers: getHeaders(),
+        body: JSON.stringify(studentData),
+      });
+
+      if (!response.ok) {
+        const error = await response.text();
+        throw new Error(error || `Ошибка ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Ошибка при создании ученика:', error);
+      throw error;
+    }
+  },
+
+  /**
    * Переключить статус оплаты занятия
    */
   toggleLessonPayment: async (lessonId) => {

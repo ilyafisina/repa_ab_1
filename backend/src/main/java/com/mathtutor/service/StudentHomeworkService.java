@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -39,6 +41,7 @@ public class StudentHomeworkService {
     private final LessonRepository lessonRepository;
     private final FileStorageService fileStorageService;
     private final MaterialRepository materialRepository;
+    private final PasswordEncoder passwordEncoder;
 
     /**
      * Получить все домашние задания студента
@@ -58,15 +61,77 @@ public class StudentHomeworkService {
      * Получить всех учеников преподавателя
      */
     public List<UserDTO> getTutorStudents(String tutorEmail) {
-        // Получаем всех студентов с role='Студент'
-        List<User> students = userRepository.findAll()
-                .stream()
-                .filter(user -> "Студент".equals(user.getRole()))
-                .collect(Collectors.toList());
+        User tutor = userRepository.findByEmail(tutorEmail)
+                .orElseThrow(() -> new RuntimeException("Преподаватель не найден"));
+
+        List<User> students = userRepository.findByRoleAndTutor_Id("Студент", tutor.getId());
 
         return students.stream()
                 .map(this::convertUserToDTO)
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * Получить незакреплённых учеников (без репетитора)
+     */
+    public List<UserDTO> getUnassignedStudents(String tutorEmail) {
+        List<User> students = userRepository.findByRoleAndTutorIsNull("Студент");
+
+        return students.stream()
+                .map(this::convertUserToDTO)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Привязать существующего ученика к репетитору
+     */
+    public UserDTO assignStudentToTutor(Long studentId, String tutorEmail) {
+        User tutor = userRepository.findByEmail(tutorEmail)
+                .orElseThrow(() -> new RuntimeException("Преподаватель не найден"));
+
+        User student = userRepository.findById(studentId)
+                .orElseThrow(() -> new RuntimeException("Ученик не найден"));
+
+        if (!"Студент".equals(student.getRole())) {
+            throw new RuntimeException("Пользователь не является учеником");
+        }
+
+        if (student.getTutor() != null) {
+            throw new RuntimeException("Ученик уже закреплён за другим репетитором");
+        }
+
+        student.setTutor(tutor);
+        student = userRepository.save(student);
+
+        return convertUserToDTO(student);
+    }
+
+    /**
+     * Создать нового ученика и привязать к репетитору
+     */
+    public UserDTO createStudentForTutor(String fullName, String email, String phone,
+                                          Byte grade, String password, String tutorEmail) {
+        User tutor = userRepository.findByEmail(tutorEmail)
+                .orElseThrow(() -> new RuntimeException("Преподаватель не найден"));
+
+        if (userRepository.existsByEmail(email)) {
+            throw new RuntimeException("Пользователь с таким email уже существует");
+        }
+
+        User student = User.builder()
+                .email(email)
+                .password(passwordEncoder.encode(password))
+                .fullName(fullName)
+                .phone(phone)
+                .grade(grade)
+                .role("Студент")
+                .balance(java.math.BigDecimal.ZERO)
+                .active(true)
+                .tutor(tutor)
+                .build();
+
+        student = userRepository.save(student);
+        return convertUserToDTO(student);
     }
 
     /**
@@ -198,6 +263,7 @@ public class StudentHomeworkService {
                 .balance(user.getBalance())
                 .active(user.getActive())
                 .avatarPath(user.getAvatarPath())
+                .tutorId(user.getTutor() != null ? user.getTutor().getId() : null)
                 .createdAt(user.getCreatedAt())
                 .updatedAt(user.getUpdatedAt())
                 .build();

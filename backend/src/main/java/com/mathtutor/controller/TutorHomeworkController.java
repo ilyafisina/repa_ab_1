@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/tutor")
@@ -150,5 +151,46 @@ public class TutorHomeworkController {
             Authentication authentication) {
         String email = authentication.getName();
         return studentHomeworkService.downloadHomeworkFileForTutor(fileId, email);
+    }
+
+    /**
+     * Получить незакреплённых учеников (без репетитора)
+     */
+    @GetMapping("/unassigned-students")
+    public ResponseEntity<List<UserDTO>> getUnassignedStudents(Authentication authentication) {
+        String email = authentication.getName();
+        List<UserDTO> students = studentHomeworkService.getUnassignedStudents(email);
+        return ResponseEntity.ok(students);
+    }
+
+    /**
+     * Привязать существующего ученика к репетитору
+     */
+    @PostMapping("/students/{studentId}/assign")
+    public ResponseEntity<UserDTO> assignStudent(
+            @PathVariable Long studentId,
+            Authentication authentication) {
+        String email = authentication.getName();
+        UserDTO student = studentHomeworkService.assignStudentToTutor(studentId, email);
+        return ResponseEntity.ok(student);
+    }
+
+    /**
+     * Создать нового ученика и привязать к репетитору
+     */
+    @PostMapping("/students/create")
+    public ResponseEntity<UserDTO> createStudent(
+            @RequestBody Map<String, Object> request,
+            Authentication authentication) {
+        String email = authentication.getName();
+        String fullName = (String) request.get("fullName");
+        String studentEmail = (String) request.get("email");
+        String phone = (String) request.get("phone");
+        String password = (String) request.get("password");
+        Byte grade = request.get("grade") != null ? ((Number) request.get("grade")).byteValue() : null;
+
+        UserDTO student = studentHomeworkService.createStudentForTutor(
+                fullName, studentEmail, phone, grade, password, email);
+        return ResponseEntity.ok(student);
     }
 }

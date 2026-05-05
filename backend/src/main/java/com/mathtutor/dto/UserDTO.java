@@ -25,6 +25,7 @@ public class UserDTO {
     private BigDecimal balance;
     private Boolean active;
     private String avatarPath;
+    private Long tutorId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

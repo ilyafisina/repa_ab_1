@@ -260,6 +260,202 @@ const AddFolderModal = React.memo(({ isOpen, onClose, newFolderName, setNewFolde
   );
 });
 
+// Модальное окно для добавления ученика
+const AddStudentModal = React.memo(({
+  isOpen,
+  onClose,
+  unassignedStudents,
+  isLoadingUnassigned,
+  onAssignStudent,
+  onCreateStudent,
+  searchQuery,
+  setSearchQuery
+}) => {
+  const [activeTab, setActiveTab] = useState('find');
+  const [createForm, setCreateForm] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    grade: '',
+    password: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
+
+  if (!isOpen) return null;
+
+  const filteredStudents = unassignedStudents.filter(student =>
+    student.fullName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    student.email?.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const handleCreateSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setIsSubmitting(true);
+    try {
+      await onCreateStudent({
+        ...createForm,
+        grade: createForm.grade ? parseInt(createForm.grade) : null
+      });
+      setCreateForm({ fullName: '', email: '', phone: '', grade: '', password: '' });
+    } catch (err) {
+      setError(err.message || 'Ошибка при создании ученика');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content homework-modal-large">
+        <div className="modal-header">
+          <h2>Добавить ученика</h2>
+          <button className="modal-close" onClick={onClose}>
+            <FaTimes />
+          </button>
+        </div>
+
+        <div className="add-student-modal-body">
+          <div className="add-student-tabs">
+            <button
+              className={`add-student-tab ${activeTab === 'find' ? 'active' : ''}`}
+              onClick={() => { setActiveTab('find'); setError(''); }}
+            >
+              <FaUsers /> Найти ученика
+            </button>
+            <button
+              className={`add-student-tab ${activeTab === 'create' ? 'active' : ''}`}
+              onClick={() => { setActiveTab('create'); setError(''); }}
+            >
+              <FaPlus /> Создать нового
+            </button>
+          </div>
+
+          {error && <div className="add-student-error">{error}</div>}
+
+          {activeTab === 'find' ? (
+            <div className="add-student-find">
+              <div className="add-student-search">
+                <input
+                  type="text"
+                  placeholder="Поиск по имени или email..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
+
+              {isLoadingUnassigned ? (
+                <div className="loading-state">
+                  <div className="loading-spinner"></div>
+                  <p>Загрузка...</p>
+                </div>
+              ) : filteredStudents.length === 0 ? (
+                <div className="empty-state">
+                  <div className="empty-icon">👤</div>
+                  <h3>Незакреплённых учеников не найдено</h3>
+                  <p>Все зарегистрированные ученики уже закреплены за репетитором, или вы можете создать нового ученика.</p>
+                </div>
+              ) : (
+                <div className="unassigned-students-list">
+                  {filteredStudents.map(student => (
+                    <div key={student.id} className="unassigned-student-card">
+                      <div className="unassigned-student-info">
+                        <div className="unassigned-student-avatar">
+                          <FaUserGraduate />
+                        </div>
+                        <div className="unassigned-student-details">
+                          <h4>{student.fullName}</h4>
+                          <p>{student.email}</p>
+                          {student.grade && <span className="student-grade-badge">{student.grade} класс</span>}
+                        </div>
+                      </div>
+                      <button
+                        className="assign-student-btn"
+                        onClick={() => onAssignStudent(student.id)}
+                      >
+                        <FaPlus /> Добавить
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <form onSubmit={handleCreateSubmit} className="add-student-create-form">
+              <div className="form-group">
+                <label>ФИО *</label>
+                <input
+                  type="text"
+                  value={createForm.fullName}
+                  onChange={(e) => setCreateForm({...createForm, fullName: e.target.value})}
+                  placeholder="Иванов Иван Иванович"
+                  required
+                />
+              </div>
+              <div className="form-row-two">
+                <div className="form-group">
+                  <label>Email *</label>
+                  <input
+                    type="email"
+                    value={createForm.email}
+                    onChange={(e) => setCreateForm({...createForm, email: e.target.value})}
+                    placeholder="student@mail.ru"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Телефон</label>
+                  <input
+                    type="text"
+                    value={createForm.phone}
+                    onChange={(e) => setCreateForm({...createForm, phone: e.target.value})}
+                    placeholder="+7 999 123-45-67"
+                  />
+                </div>
+              </div>
+              <div className="form-row-two">
+                <div className="form-group">
+                  <label>Класс</label>
+                  <select
+                    value={createForm.grade}
+                    onChange={(e) => setCreateForm({...createForm, grade: e.target.value})}
+                  >
+                    <option value="">Не указан</option>
+                    {[1,2,3,4,5,6,7,8,9,10,11].map(g => (
+                      <option key={g} value={g}>{g} класс</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label>Пароль *</label>
+                  <input
+                    type="password"
+                    value={createForm.password}
+                    onChange={(e) => setCreateForm({...createForm, password: e.target.value})}
+                    placeholder="Минимум 6 символов"
+                    minLength={6}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="modal-actions">
+                <button type="button" className="cancel-btn" onClick={onClose}>
+                  Отмена
+                </button>
+                <button type="submit" className="save-btn" disabled={isSubmitting}>
+                  {isSubmitting ? 'Создание...' : 'Создать ученика'}
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+});
+
 // Модальное окно для добавления/редактирования занятия (вынесено за пределы компонента)
 const LessonModal = React.memo(({
   isOpen,
@@ -650,6 +846,12 @@ const AdminPanel = ({ onLogout }) => {
   const [isLoadingStudents, setIsLoadingStudents] = useState(true);
   const [studentsError, setStudentsError] = useState(null);
 
+  // Состояния для модального окна добавления ученика
+  const [isAddStudentModalOpen, setIsAddStudentModalOpen] = useState(false);
+  const [unassignedStudents, setUnassignedStudents] = useState([]);
+  const [isLoadingUnassigned, setIsLoadingUnassigned] = useState(false);
+  const [addStudentSearchQuery, setAddStudentSearchQuery] = useState('');
+
   // Состояния для форм
   const [lessonFormData, setLessonFormData] = useState({
     date: '',
@@ -687,10 +889,8 @@ const AdminPanel = ({ onLogout }) => {
 
   const [lessons, setLessons] = useState([]);
 
-  // Фильтруем учеников - показываем только тех, у кого есть занятия с этим преподавателем
-  const studentsWithLessons = students.filter(student =>
-    lessons.some(lesson => lesson.studentId === student.id)
-  );
+  // Все ученики репетитора (backend уже фильтрует по tutor_id)
+  const studentsWithLessons = students;
 
   const [materials, setMaterials] = useState([
     {
@@ -774,6 +974,38 @@ const AdminPanel = ({ onLogout }) => {
       onLogout();
     }
     window.location.href = '/';
+  };
+
+  // Функции для добавления ученика
+  const handleOpenAddStudentModal = async () => {
+    setIsAddStudentModalOpen(true);
+    setAddStudentSearchQuery('');
+    setIsLoadingUnassigned(true);
+    try {
+      const data = await adminAPI.getUnassignedStudents();
+      setUnassignedStudents(data);
+    } catch (error) {
+      console.error('Ошибка загрузки незакреплённых учеников:', error);
+      setUnassignedStudents([]);
+    } finally {
+      setIsLoadingUnassigned(false);
+    }
+  };
+
+  const handleAssignStudent = async (studentId) => {
+    try {
+      const assigned = await adminAPI.assignStudent(studentId);
+      setStudents(prev => [...prev, assigned]);
+      setUnassignedStudents(prev => prev.filter(s => s.id !== studentId));
+    } catch (error) {
+      alert(error.message || 'Ошибка при привязке ученика');
+    }
+  };
+
+  const handleCreateStudent = async (studentData) => {
+    const created = await adminAPI.createStudent(studentData);
+    setStudents(prev => [...prev, created]);
+    setIsAddStudentModalOpen(false);
   };
 
   // Функции для расписания
@@ -1763,6 +1995,9 @@ const AdminPanel = ({ onLogout }) => {
             <>
               <div className="section-header-actions">
                 <h2>Мои ученики</h2>
+                <button className="add-lesson-btn" onClick={handleOpenAddStudentModal}>
+                  + Добавить ученика
+                </button>
               </div>
 
               {isLoadingStudents ? (
@@ -2380,6 +2615,16 @@ const AdminPanel = ({ onLogout }) => {
         onClose={() => setShowCheckHomeworkModal(false)} 
         homework={checkingHomework}
         onSubmit={handleSubmitHomeworkCheck}
+      />
+      <AddStudentModal
+        isOpen={isAddStudentModalOpen}
+        onClose={() => setIsAddStudentModalOpen(false)}
+        unassignedStudents={unassignedStudents}
+        isLoadingUnassigned={isLoadingUnassigned}
+        onAssignStudent={handleAssignStudent}
+        onCreateStudent={handleCreateStudent}
+        searchQuery={addStudentSearchQuery}
+        setSearchQuery={setAddStudentSearchQuery}
       />
     </div>
   );

@@ -51,6 +51,10 @@ public class User implements UserDetails {
     @Column
     private String avatarPath;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tutor_id")
+    private User tutor;
+
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
